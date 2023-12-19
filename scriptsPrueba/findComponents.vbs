@@ -21,7 +21,7 @@ For Each application in applications
 
         ' Loop through the components to find your DLL
         For Each component in components
-            If (InStr(component.Name, "YourDLLName") > 0) Then ' Replace with your DLL name
+            If (InStr(component.Name, "ComPolCompag_tx.dll") > 0) Then ' Replace with your DLL name
                 WScript.Echo "Found DLL: " & component.Name
             End If
         Next
