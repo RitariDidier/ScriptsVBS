@@ -5,7 +5,7 @@
 ' |                              |
 ' Set the name of the DLL file
 Dim dllName
-dllName = "C:\Users\Administrator\Desktop\masivo\ComPolCompag_tx 1.dll"
+dllName = "C:\Users\Administrator\Desktop\masivo\ComPolCompag_tx.dll"
 
 ' Create a shell object
 Dim shell
@@ -29,7 +29,6 @@ If execObject.Status = 0 Then
     Dim output
     output = execObject.StdOut.ReadAll
     WScript.Echo output
-    WScript.Echo "a"
 Else
     WScript.Echo "Error in executing registry query."
 End If
