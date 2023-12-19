@@ -2,13 +2,13 @@ Dim catalog
 Dim applications
 Dim application
 Dim components
-Dim newComponent
+Dim appKey
 
 ' Set the name of the existing COM+ Application and the path to the DLL
 Dim comAppName
 Dim dllPath
-comAppName = "masivo" ' Replace with the name of your existing COM+ Application
-dllPath = "C:\Users\Administrator\Desktop\masivo\ComPolCompag_tx.dll" ' Replace with the full path to your DLL
+comAppName = "YourExistingCOMAppName" ' Replace with the name of your existing COM+ Application
+dllPath = "C:\\Path\\To\\Your\\Component.dll" ' Replace with the full path to your DLL
 
 ' Create a new COMAdminCatalog object
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
@@ -23,38 +23,28 @@ appExists = False
 For Each application in applications
     If (application.Name = comAppName) Then
         appExists = True
+        appKey = application.Key
         Exit For
     End If
 Next
 
 If appExists Then
-    ' Get the collection of components for the application
-    Set components = applications.GetCollection("Components", application.Key)
-    components.Populate
-
     ' Install the new component (DLL) to the COM+ Application
-    catalog.InstallComponent application.Key, dllPath, "", ""
-    
-    ' Check for errors
-    If catalog.GetCollection("Errors").Count > 0 Then
-        Dim errorMessages, item
-        Set errorMessages = catalog.GetCollection("Errors")
-        errorMessages.Populate
+    On Error Resume Next ' Enable error handling
+    catalog.InstallComponent appKey, dllPath, "", ""
 
-        ' Display each error message
-        For Each item in errorMessages
-            WScript.Echo "Error: " & item.Value("Description")
-        Next
+    If Err.Number <> 0 Then
+        WScript.Echo "Error: " & Err.Description
+        Err.Clear ' Clear the error
     Else
         WScript.Echo "Added new component to COM+ Application: " & dllPath
     End If
+    On Error GoTo 0 ' Disable error handling
 Else
     WScript.Echo "COM+ Application not found: " & comAppName
 End If
 
-
 ' Clean up
-Set newComponent = Nothing
 Set components = Nothing
 Set application = Nothing
 Set applications = Nothing
