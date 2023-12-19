@@ -3,6 +3,11 @@ Dim applications
 Dim application
 Dim components
 Dim component
+Dim fso, outputFile
+
+' Specify the output file path
+Dim outputFilePath
+outputFilePath = "C:\Users\Administrator\Desktop\ComponentsList.txt"
 
 ' Create a new COMAdminCatalog object
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
@@ -12,6 +17,10 @@ Set applications = catalog.GetCollection("Applications")
 
 applications.Populate
 
+' Create FileSystemObject to handle file writing
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set outputFile = fso.CreateTextFile(outputFilePath, True)
+
 ' Loop through the applications
 For Each application in applications
     If (application.Name = "masivo") Then
@@ -19,17 +28,18 @@ For Each application in applications
         Set components = applications.GetCollection("Components", application.Key)
         components.Populate
 
-        ' Loop through the components to find your DLL
+        ' Write all components to file
         For Each component in components
-            If (InStr(component.Name, "ComPolCompag_tx.dll") > 0) Then ' Replace with your DLL name
-                WScript.Echo "Found DLL: " & component.Name
-            End If
+            outputFile.WriteLine("Component: " & component.Name)
         Next
     End If
 Next
 
 ' Clean up
+outputFile.Close
+Set outputFile = Nothing
 Set components = Nothing
 Set application = Nothing
 Set applications = Nothing
 Set catalog = Nothing
+Set fso = Nothing
