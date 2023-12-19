@@ -33,17 +33,25 @@ If appExists Then
     components.Populate
 
     ' Install the new component (DLL) to the COM+ Application
-    Dim installResult
-    installResult = catalog.InstallComponent(application.Key, dllPath, "", "")
+    catalog.InstallComponent application.Key, dllPath, "", ""
+    
+    ' Check for errors
+    If catalog.GetCollection("Errors").Count > 0 Then
+        Dim errorMessages, item
+        Set errorMessages = catalog.GetCollection("Errors")
+        errorMessages.Populate
 
-    If installResult Then
-        WScript.Echo "Added new component to COM+ Application: " & dllPath
+        ' Display each error message
+        For Each item in errorMessages
+            WScript.Echo "Error: " & item.Value("Description")
+        Next
     Else
-        WScript.Echo "Failed to add component to COM+ Application."
+        WScript.Echo "Added new component to COM+ Application: " & dllPath
     End If
 Else
     WScript.Echo "COM+ Application not found: " & comAppName
 End If
+
 
 ' Clean up
 Set newComponent = Nothing
