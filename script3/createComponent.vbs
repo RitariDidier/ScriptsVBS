@@ -28,15 +28,19 @@ For Each application in applications
 Next
 
 If appExists Then
-    ' Add the component (DLL) to the COM+ Application
+    ' Get the collection of components for the application
     Set components = applications.GetCollection("Components", application.Key)
     components.Populate
 
-    Set newComponent = components.Add
-    newComponent.Value("DLL") = dllPath ' Set the path to the DLL
-    components.SaveChanges
+    ' Install the new component (DLL) to the COM+ Application
+    Dim installResult
+    installResult = catalog.InstallComponent(application.Key, dllPath, "", "")
 
-    WScript.Echo "Added new component to COM+ Application: " & dllPath
+    If installResult Then
+        WScript.Echo "Added new component to COM+ Application: " & dllPath
+    Else
+        WScript.Echo "Failed to add component to COM+ Application."
+    End If
 Else
     WScript.Echo "COM+ Application not found: " & comAppName
 End If
