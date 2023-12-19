@@ -5,8 +5,7 @@
 ' |                              |
 ' Set the name of the DLL file
 Dim dllName
-dllName = "comsvcs.dll"
-dllName = "C:\Windows\SysWOW64\comsvcs.dll"
+dllName = "C:\Users\Administrator\Desktop\masivo\ComPolCompag_tx 1.dll"
 
 ' Create a shell object
 Dim shell
