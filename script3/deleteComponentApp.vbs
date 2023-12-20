@@ -5,27 +5,26 @@ Dim components
 Dim component
 Dim componentNameToDelete
 
-' Set the name of the COM+ Application and the component to delete
-Dim comAppName
-comAppName = "masivo" ' Replace with your COM+ Application name
-componentNameToDelete = "comPOLCOMPAG_TX.impCompag" ' Replace with the name of the component to delete
+Set fso = CreateObject("Scripting.FileSystemObject")
+Dim outputFilePath
+outputFilePath = "C:\Users\Administrator\Desktop\logs\Delete.txt"
+Set outputFile = fso.CreateTextFile(outputFilePath, True)
 
-' Create a new COMAdminCatalog object
+Dim comAppName
+comAppName = "masivo"
+componentNameToDelete = "comPOLCOMPAG_TX.impCompag"
+
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
 
-' Get the collection of COM+ Applications
 Set applications = catalog.GetCollection("Applications")
 
 applications.Populate
 
-' Loop through the applications
 For Each application in applications
     If (application.Name = comAppName) Then
-        ' Get the collection of components for the application
         Set components = applications.GetCollection("Components", application.Key)
         components.Populate
 
-        ' Loop through the components to find the one to delete
         Dim i
         For i = 0 To components.Count - 1
             Set component = components.Item(i)
@@ -34,6 +33,7 @@ For Each application in applications
                 components.Remove(i)
                 ' Save the changes to the COM+ Catalog
                 components.SaveChanges
+                outputFile.WriteLine("Component deleted: " & componentNameToDelete)
                 WScript.Echo "Component deleted: " & componentNameToDelete
                 Exit For
             End If
@@ -41,7 +41,9 @@ For Each application in applications
     End If
 Next
 
-' Clean up
+outputFile.Close
+
+Set outputFile = Nothing
 Set components = Nothing
 Set application = Nothing
 Set applications = Nothing
