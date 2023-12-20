@@ -1,6 +1,6 @@
 Set objShell = CreateObject("WScript.Shell")
 
-strScriptPath = "C:\\Users\\Administrator\\Desktop\\scriptsVBS\\scripts3\\" 
+strScriptPath = "C:\\Users\\Administrator\\Desktop\\scripts\\scriptsVBS\\script3\\" 
 
 arrScripts = Array("1-ListCOMApp.vbs", "2-findComponents.vbs", "3-deleteComponentApp.vbs", "4-createComponent.vbs", "5-startApp.vbs")
 
