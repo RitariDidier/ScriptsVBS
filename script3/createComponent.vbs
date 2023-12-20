@@ -3,6 +3,7 @@ Dim applications
 Dim application
 Dim components
 Dim appKey
+Set fso = CreateObject("Scripting.FileSystemObject")
 
 Dim outputFilePath
 outputFilePath = "C:\Users\Administrator\Desktop\logs\create.txt"
