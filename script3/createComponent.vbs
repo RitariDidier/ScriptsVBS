@@ -4,20 +4,20 @@ Dim application
 Dim components
 Dim appKey
 
+Dim outputFilePath
+outputFilePath = "C:\Users\Administrator\Desktop\logs\create.txt"
+Set outputFile = fso.CreateTextFile(outputFilePath, True)
+
 Dim comAppName
 Dim dllPath
 comAppName = "masivo"
 dllPath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 
-
-' Create a new COMAdminCatalog object
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
 
-' Get the collection of COM+ Applications
 Set applications = catalog.GetCollection("Applications")
 applications.Populate
 
-' Find the existing COM+ Application
 Dim appExists
 appExists = False
 For Each application in applications
@@ -29,22 +29,24 @@ For Each application in applications
 Next
 
 If appExists Then
-    ' Install the new component (DLL) to the COM+ Application
-    On Error Resume Next ' Enable error handling
+
+    On Error Resume Next
     catalog.InstallComponent appKey, dllPath, "", ""
 
     If Err.Number <> 0 Then
+        outputFile.WriteLine("Error: " & Err.Description)
         WScript.Echo "Error: " & Err.Description
-        Err.Clear ' Clear the error
+        Err.Clear
     Else
+        outputFile.WriteLine("Added new component to COM+ Application: " & dllPath)
         WScript.Echo "Added new component to COM+ Application: " & dllPath
     End If
-    On Error GoTo 0 ' Disable error handling
+    On Error GoTo 0
 Else
+    outputFile.WriteLine("COM+ Application not found:" & comAppName)
     WScript.Echo "COM+ Application not found: " & comAppName
 End If
 
-' Clean up
 Set components = Nothing
 Set application = Nothing
 Set applications = Nothing
