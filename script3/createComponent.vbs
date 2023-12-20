@@ -15,10 +15,11 @@ comAppName = "masivo"
 dllPath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 
 If fso.FileExists(dllPath) Then
+    outputFile.WriteLine("DLL file found: " & dllPath)
     WScript.Echo "DLL file found: " & dllPath
 Else
-    ' outputFile.WriteLine("DLL file not found: " & dllPath)
-    WScript.Echo "DLL file NOT found: " & dllPath
+    outputFile.WriteLine("DLL file not found: " & dllPath)
+    WScript.Echo "Error: DLL file NOT found: " & dllPath
     ' Exiting the script
     WScript.Quit
 End If
