@@ -14,6 +14,15 @@ Dim dllPath
 comAppName = "masivo"
 dllPath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 
+If fso.FileExists(dllPath) Then
+    ' If the file exists, proceed with the installation
+    WScript.Echo "DLL file found: " & dllPath
+Else
+    ' If the file does not exist, write to log and display message
+    ' outputFile.WriteLine("DLL file not found: " & dllPath)
+    WScript.Echo "DLL file NOT found: " & dllPath
+End If
+
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
 
 Set applications = catalog.GetCollection("Applications")
@@ -35,8 +44,8 @@ If appExists Then
     catalog.InstallComponent appKey, dllPath, "", ""
 
     If Err.Number <> 0 Then
-        outputFile.WriteLine("Error: " & Err.Description)
-        WScript.Echo "Error: " & Err.Description
+        outputFile.WriteLine("Error: " & Err)
+        WScript.Echo "Error: " & Err
         Err.Clear
     Else
         outputFile.WriteLine("Added new component to COM+ Application: " & dllPath)
@@ -52,3 +61,4 @@ Set components = Nothing
 Set application = Nothing
 Set applications = Nothing
 Set catalog = Nothing
+
