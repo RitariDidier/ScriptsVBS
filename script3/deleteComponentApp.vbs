@@ -7,7 +7,7 @@ Dim componentNameToDelete
 
 Set fso = CreateObject("Scripting.FileSystemObject")
 Dim outputFilePath
-outputFilePath = "C:\Users\Administrator\Desktop\logs\Delete.txt"
+outputFilePath = "C:\Users\Administrator\Desktop\logs\3-Delete.txt"
 Set outputFile = fso.CreateTextFile(outputFilePath, True)
 
 Dim comAppName

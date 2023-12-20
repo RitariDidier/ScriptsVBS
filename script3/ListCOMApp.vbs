@@ -1,6 +1,6 @@
 
 Dim outputFilePath
-outputFilePath = "C:\Users\Administrator\Desktop\logs\COMList.txt"
+outputFilePath = "C:\Users\Administrator\Desktop\logs\1-COMList.txt"
 
 Set fso = CreateObject("Scripting.FileSystemObject")
 

@@ -6,7 +6,7 @@ Dim appKey
 Set fso = CreateObject("Scripting.FileSystemObject")
 
 Dim outputFilePath
-outputFilePath = "C:\Users\Administrator\Desktop\logs\create.txt"
+outputFilePath = "C:\Users\Administrator\Desktop\logs\4-create.txt"
 Set outputFile = fso.CreateTextFile(outputFilePath, True)
 
 Dim comAppName

@@ -6,7 +6,7 @@ Dim component
 Dim fso, outputFile
 
 Dim outputFilePath
-outputFilePath = "C:\Users\Administrator\Desktop\logs\ComponentsList.txt"
+outputFilePath = "C:\Users\Administrator\Desktop\logs\2-ComponentsList.txt"
 
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
 
