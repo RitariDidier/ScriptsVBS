@@ -4,13 +4,10 @@ Dim application
 Dim components
 Dim appKey
 
-' Set the name of the existing COM+ Application and the path to the DLL
 Dim comAppName
 Dim dllPath
-comAppName = "masivo" ' Replace with the name of your existing COM+ Application
-dllPath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll" ' Replace with the full path to your DLL
-' comAppName = "masivo" ' Replace with the name of your existing COM+ Application
-' dllPath = "C:\Users\Administrator\Desktop\masivo\ComPolCompag_tx.dll" ' Replace with the full path to your DLL
+comAppName = "masivo"
+dllPath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 
 
 ' Create a new COMAdminCatalog object
