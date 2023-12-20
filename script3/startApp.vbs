@@ -1,30 +1,27 @@
 Dim catalog
 Dim comAppName
-Dim appIsRunning
 
-comAppName = "masivo" 
+' Set the name of the existing COM+ Application
+comAppName = "masivo" ' Replace with the name of your existing COM+ Application
 
+' Create a new COMAdminCatalog object
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
 
-On Error Resume Next
+On Error Resume Next ' Enable error handling
 
-appIsRunning = catalog.IsApplicationRunning(comAppName)
+' Attempt to start the COM+ Application
+catalog.StartApplication comAppName
 
 If Err.Number <> 0 Then
-    WScript.Echo "Error checking status of COM+ Application '" & comAppName & "': " & Err.Description
-    Err.Clear ' Clear the error
-ElseIf appIsRunning Then
-    WScript.Echo "COM+ Application '" & comAppName & "' is already running."
-Else
-    ' Start the COM+ Application because it is not already running
-    catalog.StartApplication comAppName
-    
-    If Err.Number <> 0 Then
-        WScript.Echo "Error starting COM+ Application '" & comAppName & "': " & Err.Description
-        Err.Clear ' Clear the error
+    ' Check if the error is because the application is already running or another issue
+    If InStr(Err.Description, "The application is already running") > 0 Then
+        WScript.Echo "COM+ Application '" & comAppName & "' is already running."
     Else
-        WScript.Echo "COM+ Application '" & comAppName & "' started successfully."
+        WScript.Echo "Error starting COM+ Application '" & comAppName & "': " & Err.Description
     End If
+    Err.Clear ' Clear the error
+Else
+    WScript.Echo "COM+ Application '" & comAppName & "' started successfully."
 End If
 
 On Error GoTo 0 ' Disable error handling
