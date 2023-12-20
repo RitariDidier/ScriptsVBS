@@ -15,12 +15,12 @@ comAppName = "masivo"
 dllPath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 
 If fso.FileExists(dllPath) Then
-    ' If the file exists, proceed with the installation
     WScript.Echo "DLL file found: " & dllPath
 Else
-    ' If the file does not exist, write to log and display message
     ' outputFile.WriteLine("DLL file not found: " & dllPath)
     WScript.Echo "DLL file NOT found: " & dllPath
+    ' Exiting the script
+    WScript.Quit
 End If
 
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
