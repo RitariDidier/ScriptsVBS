@@ -22,7 +22,7 @@ For Each strScript in arrScripts
     Else
         WScript.Echo strScript & " failed with exit code: " & scriptExitCode
         ' Optional: Exit the loop if a script fails
-        Exit For
+        ' Exit For
     End If
 Next
 
