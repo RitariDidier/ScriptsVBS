@@ -20,7 +20,7 @@ If fso.FileExists(dllPath) Then
 Else
     outputFile.WriteLine("DLL file not found: " & dllPath)
     WScript.Echo "Error: DLL file NOT found: " & dllPath
-    WScript.Quit
+    WScript.Quit(1)
 End If
 
 Set catalog = CreateObject("COMAdmin.COMAdminCatalog")
