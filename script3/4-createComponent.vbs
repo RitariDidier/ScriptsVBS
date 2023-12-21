@@ -55,6 +55,7 @@ If appExists Then
 Else
     outputFile.WriteLine("COM+ Application not found:" & comAppName)
     WScript.Echo "COM+ Application not found: " & comAppName
+    WScript.Quit(1) ' Exit script with an error code
 End If
 
 Set components = Nothing

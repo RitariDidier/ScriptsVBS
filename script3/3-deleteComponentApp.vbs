@@ -65,6 +65,7 @@ if (Found) Then
 else
     outputFile.WriteLine("Error: Component Not Found: " & componentNameToDelete)
     WScript.Echo("Error: Component Not Found: " & componentNameToDelete)
+    WScript.Quit(1) ' Exit script with an error code
 End If
 
 
