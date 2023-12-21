@@ -26,7 +26,7 @@ found = False
 ' validate existence of component
 For Each application in applications
     If (application.Name = comAppName) Then
-        WScript.Echo "ComApp Found : " & comAppName
+        WScript.Echo "ComApp: "  & comAppName & " Found"
         Set components = applications.GetCollection("Components", application.Key)
         components.Populate
 
@@ -34,7 +34,7 @@ For Each application in applications
         For i = 0 To components.Count - 1
             Set component = components.Item(i)
             If (component.Name = componentNameToDelete) Then
-                WScript.Echo "Component Found :" & componentNameToDelete
+                WScript.Echo "Component : " & componentNameToDelete & "Found"
                 found = True
                 Exit For
             End If
