@@ -49,7 +49,7 @@ if (Found) Then
             Set components = applications.GetCollection("Components", application.Key)
             components.Populate
 
-            Dim i
+            ' Dim i
             For i = 0 To components.Count - 1
                 Set component = components.Item(i)
                 If (component.Name = componentNameToDelete) Then
