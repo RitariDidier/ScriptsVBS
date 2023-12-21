@@ -20,7 +20,6 @@ If fso.FileExists(dllPath) Then
 Else
     outputFile.WriteLine("DLL file not found: " & dllPath)
     WScript.Echo "Error: DLL file NOT found: " & dllPath
-    ' Exiting the script
     WScript.Quit
 End If
 
