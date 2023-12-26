@@ -6,8 +6,8 @@ Dim destinationFilePath
 Set fso = CreateObject("Scripting.FileSystemObject")
 
 ' Define the source file path and the destination file path
-sourceFilePath = "C:\\Users\\Administrator\\Desktop\\sshFolder\\file.txt"
-destinationFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\file.txt"
+sourceFilePath = "C:\\Users\\Administrator\\Desktop\\sshFolder\\ComPolCompag_tx.dll"
+destinationFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 
 ' Check if the source file exists
 If fso.FileExists(sourceFilePath) Then
