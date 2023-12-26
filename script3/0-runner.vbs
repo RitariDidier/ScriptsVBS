@@ -1,12 +1,6 @@
 Dim logPath
 logPath = "C:\Users\Administrator\Desktop\logs\"
 
-Dim JiraTicket
-JiraTicket = "COTVEI-521"
-
-Dim logPathFull
-logPathFull = logPath & JiraTicket
-
 WScript.Echo "logPathFull: " & logPathFull
 
 Set objShell = CreateObject("WScript.Shell")
