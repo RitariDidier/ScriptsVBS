@@ -6,6 +6,7 @@ Dim dateParts
 dateParts = Split(CStr(Date()), "/")
 
 ' Assuming the format is DD/MM/YYYY, you would then have:
+Dim day, month, year
 day = dateParts(0)
 month = dateParts(1)
 year = dateParts(2)
