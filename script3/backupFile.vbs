@@ -2,24 +2,19 @@ Dim fso
 Dim sourceFilePath
 Dim destinationFilePath
 
-Dim currentDate
-currentDate = CStr(Date())
-WScript.Echo "Current Date: " & currentDate
+Dim dateParts
+dateParts = Split(CStr(Date()), "/")
 
-Dim day, month, year
-' Comment out the other assignments and test them one by one
-day = Day(currentDate)
+' Assuming the format is DD/MM/YYYY, you would then have:
+day = dateParts(0)
+month = dateParts(1)
+year = dateParts(2)
+
 WScript.Echo "Day: " & day
-month = Month(currentDate)
 WScript.Echo "Month: " & month
-year = Year(currentDate)
 WScript.Echo "Year: " & year
 
-' Formatting the date as DD/MM/YYYY
-Dim formattedDate
-formattedDate = Right("0" & day, 2) & "/" & Right("0" & month, 2) & "/" & year
-WScript.Echo "formattedDate: " & formattedDate ' Add this line for debugging
-
+formattedDate = day & month & year
 
 ' Create FileSystemObject
 Set fso = CreateObject("Scripting.FileSystemObject")
