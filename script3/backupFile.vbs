@@ -17,6 +17,8 @@ WScript.Echo "Year: " & year ' Add this line for debugging
 ' Formatting the date as DD/MM/YYYY
 Dim formattedDate
 formattedDate = Right("0" & day, 2) & "/" & Right("0" & month, 2) & "/" & year
+WScript.Echo "formattedDate: " & formattedDate ' Add this line for debugging
+
 
 ' Create FileSystemObject
 Set fso = CreateObject("Scripting.FileSystemObject")
