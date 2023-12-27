@@ -7,8 +7,8 @@ dateParts = Split(CStr(Date()), "/")
 
 ' Assuming the format is DD/MM/YYYY, you would then have:
 Dim day, month, year
-day = dateParts(0)
-month = dateParts(1)
+month = dateParts(0)
+day = dateParts(1)
 year = dateParts(2)
 
 WScript.Echo "Day: " & day
