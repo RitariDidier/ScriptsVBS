@@ -30,13 +30,17 @@ destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag
 ' Check if the source file exists
 If fso.FileExists(sourceFilePath) Then
     ' Check if the destination file already exists and delete it if necessary
-    ' If fso.FileExists(destinationFilePath) Then
-    '     ' Optionally, confirm before overwriting the existing file
-    '     fso.DeleteFile destinationFilePath
-    ' End If
-    ' Copy the file
-    fso.CopyFile sourceFilePath, destinationFilePath
-    WScript.Echo "File copied successfully."
+    If fso.FileExists(destinationFilePath) Then
+        dim version
+        version = "1"
+        destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & version & ".dll"
+        fso.CopyFile sourceFilePath, destinationFilePath
+    else 
+        ' Copy the file
+        fso.CopyFile sourceFilePath, destinationFilePath
+        WScript.Echo "File copied successfully."
+    End If
+
 Else
     WScript.Echo "Source file does not exist."
 End If
