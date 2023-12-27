@@ -3,11 +3,16 @@ Dim sourceFilePath
 Dim destinationFilePath
 
 Dim currentDate
-currentDate = CDate(Date())
+currentDate = Date()
+WScript.Echo "Current Date: " & currentDate ' Add this line for debugging
+
 Dim day, month, year
 day = Day(currentDate)
+WScript.Echo "Day: " & day ' Add this line for debugging
 month = Month(currentDate)
+WScript.Echo "Month: " & month ' Add this line for debugging
 year = Year(currentDate)
+WScript.Echo "Year: " & year ' Add this line for debugging
 
 ' Formatting the date as DD/MM/YYYY
 Dim formattedDate
