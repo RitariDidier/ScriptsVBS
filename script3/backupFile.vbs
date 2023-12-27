@@ -3,7 +3,7 @@ Dim sourceFilePath
 Dim destinationFilePath
 
 Dim currentDate
-currentDate = Date()
+currentDate = CDate(Date())
 Dim day, month, year
 day = Day(currentDate)
 month = Month(currentDate)
