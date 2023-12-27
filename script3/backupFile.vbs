@@ -6,6 +6,7 @@ Dim currentDate
 currentDate = CStr(Date())
 WScript.Echo "Current Date: " & currentDate
 
+Dim day, month, year
 ' Comment out the other assignments and test them one by one
 day = Day(currentDate)
 WScript.Echo "Day: " & day
