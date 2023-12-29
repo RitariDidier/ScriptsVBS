@@ -5,7 +5,6 @@ Dim destinationFilePath
 Dim dateParts
 dateParts = Split(CStr(Date()), "/")
 
-' Assuming the format is DD/MM/YYYY, you would then have:
 Dim day, month, year
 month = dateParts(0)
 day = dateParts(1)
@@ -17,26 +16,37 @@ WScript.Echo "Year: " & year
 
 formattedDate = day & month & year
 
-' Create FileSystemObject
 Set fso = CreateObject("Scripting.FileSystemObject")
 
-' Define the source file path and the destination file path
 sourceFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll"
 ' ' destinationFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\Backup\\ComPolCompag_tx_"&formattedDate".dll"
 ' destinationFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\Backup\\ComPolCompag_tx_" & formattedDate & ".dll"
-destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & ".dll"
+' destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & ".dll"
 
 
-' Check if the source file exists
 If fso.FileExists(sourceFilePath) Then
-    ' Check if the destination file already exists and delete it if necessary
+    For i = 1 To 15
+        WScript.Echo i
+        destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & i & ".dll"
+        If fso.FileExists(destinationFilePath) Then
+            ' fso.CopyFile sourceFilePath, destinationFilePath
+            WScript.Echo("Existe")
+        else 
+            ' fso.CopyFile sourceFilePath, destinationFilePath
+            WScript.Echo("No Existe, Creando Archivo: " & destinationFilePath)
+        End If
+    Next
+Else
+    WScript.Echo "Source file does not exist."
+End If
+
+If fso.FileExists(sourceFilePath) Then
     If fso.FileExists(destinationFilePath) Then
         dim version
         version = "1"
         destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & version & ".dll"
         fso.CopyFile sourceFilePath, destinationFilePath
     else 
-        ' Copy the file
         fso.CopyFile sourceFilePath, destinationFilePath
         WScript.Echo "File copied successfully."
     End If
@@ -44,7 +54,20 @@ If fso.FileExists(sourceFilePath) Then
 Else
     WScript.Echo "Source file does not exist."
 End If
+' If fso.FileExists(sourceFilePath) Then
+'     If fso.FileExists(destinationFilePath) Then
+'         dim version
+'         version = "1"
+'         destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & version & ".dll"
+'         fso.CopyFile sourceFilePath, destinationFilePath
+'     else 
+'         fso.CopyFile sourceFilePath, destinationFilePath
+'         WScript.Echo "File copied successfully."
+'     End If
 
-' Clean up
+' Else
+'     WScript.Echo "Source file does not exist."
+' End If
+
 Set fso = Nothing
 
