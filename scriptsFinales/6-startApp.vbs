@@ -25,6 +25,7 @@ If Err.Number <> 0 Then
 Else
     outputFile.WriteLine("COM+ Application '" & comAppName & "' started successfully.")
     WScript.Echo "COM+ Application '" & comAppName & "' started successfully."
+    WScript.Quit(0)
 End If
 
 On Error GoTo 0

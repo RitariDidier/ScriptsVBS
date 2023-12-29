@@ -50,6 +50,7 @@ If appExists Then
     Else
         outputFile.WriteLine("Added new component to COM+ Application: " & dllPath)
         WScript.Echo "Added new component to COM+ Application: " & dllPath
+        WScript.Quit(0)
     End If
     On Error GoTo 0
 Else
