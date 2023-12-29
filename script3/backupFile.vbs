@@ -27,13 +27,10 @@ sourceFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\ComPolCompag_tx.dll
 If fso.FileExists(sourceFilePath) Then
     For i = 1 To 15
         destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & i & ".dll"
-        If fso.FileExists(destinationFilePath) Then
-            ' fso.CopyFile sourceFilePath, destinationFilePath
-            WScript.Echo("Existe")
-        else 
+        If Not fso.FileExists(destinationFilePath) Then
             fso.CopyFile sourceFilePath, destinationFilePath
             WScript.Echo("No Existe, Creando Archivo: " & destinationFilePath)
-            Exit For
+            Exit For    
         End If
     Next
 Else
