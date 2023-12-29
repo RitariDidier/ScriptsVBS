@@ -24,7 +24,7 @@ If fso.FileExists(sourceFilePath) Then
         destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\doc" & formattedDate & "-" & i & ".txt"
         If Not fso.FileExists(destinationFilePath) Then
             fso.CopyFile sourceFilePath, destinationFilePath
-            WScript.Echo("No Existe, Creando Archivo: " & destinationFilePath)
+            ' WScript.Echo("No Existe, Creando Archivo: " & destinationFilePath)
             Exit For    
         End If
     Next

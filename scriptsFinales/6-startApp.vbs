@@ -16,15 +16,15 @@ catalog.StartApplication comAppName
 If Err.Number <> 0 Then
     If InStr(Err.Description, "The application is already running") > 0 Then
         outputFile.WriteLine("COM+ Application '" & comAppName & "' is already running.")
-        WScript.Echo "COM+ Application '" & comAppName & "' is already running."
+        ' WScript.Echo "COM+ Application '" & comAppName & "' is already running."
     Else
         outputFile.WriteLine("Error starting COM+ Application '" & comAppName & "': " & Err.Description)
-        WScript.Echo "Error starting COM+ Application '" & comAppName & "': " & Err.Description
+        ' WScript.Echo "Error starting COM+ Application '" & comAppName & "': " & Err.Description
     End If
     Err.Clear
 Else
     outputFile.WriteLine("COM+ Application '" & comAppName & "' started successfully.")
-    WScript.Echo "COM+ Application '" & comAppName & "' started successfully."
+    ' WScript.Echo "COM+ Application '" & comAppName & "' started successfully."
     WScript.Quit(0)
 End If
 
