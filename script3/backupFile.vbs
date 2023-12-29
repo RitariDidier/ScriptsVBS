@@ -40,20 +40,20 @@ Else
     WScript.Echo "Source file does not exist."
 End If
 
-If fso.FileExists(sourceFilePath) Then
-    If fso.FileExists(destinationFilePath) Then
-        dim version
-        version = "1"
-        destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & version & ".dll"
-        fso.CopyFile sourceFilePath, destinationFilePath
-    else 
-        fso.CopyFile sourceFilePath, destinationFilePath
-        WScript.Echo "File copied successfully."
-    End If
+' If fso.FileExists(sourceFilePath) Then
+'     If fso.FileExists(destinationFilePath) Then
+'         dim version
+'         version = "1"
+'         destinationFilePath = "C:\Users\Administrator\Desktop\masivo\Backup\ComPolCompag_tx_" & formattedDate & "-" & version & ".dll"
+'         fso.CopyFile sourceFilePath, destinationFilePath
+'     else 
+'         fso.CopyFile sourceFilePath, destinationFilePath
+'         WScript.Echo "File copied successfully."
+'     End If
 
-Else
-    WScript.Echo "Source file does not exist."
-End If
+' Else
+'     WScript.Echo "Source file does not exist."
+' End If
 ' If fso.FileExists(sourceFilePath) Then
 '     If fso.FileExists(destinationFilePath) Then
 '         dim version
