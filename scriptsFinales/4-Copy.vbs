@@ -12,6 +12,7 @@ destinationFilePath = "C:\\Users\\Administrator\\Desktop\\masivo\\doc.txt"
 If fso.FileExists(sourceFilePath) Then
     fso.CopyFile sourceFilePath, destinationFilePath
     WScript.Echo "File copied successfully."
+    WScript.Quit(0)
 Else
     WScript.Echo "Source file does not exist."
 End If

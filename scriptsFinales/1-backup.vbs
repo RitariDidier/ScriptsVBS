@@ -28,6 +28,7 @@ If fso.FileExists(sourceFilePath) Then
             Exit For    
         End If
     Next
+    WScript.Quit(0)
 Else
     WScript.Echo "Source file does not exist."
 End If
