@@ -34,6 +34,7 @@ If fso.FileExists(sourceFilePath) Then
         else 
             ' fso.CopyFile sourceFilePath, destinationFilePath
             WScript.Echo("No Existe, Creando Archivo: " & destinationFilePath)
+            Exit For
         End If
     Next
 Else
