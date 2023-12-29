@@ -5,7 +5,7 @@ WScript.Echo "logPathFull: " & logPathFull
 
 Set objShell = CreateObject("WScript.Shell")
 strScriptPath = "C:\\Users\\Administrator\\Desktop\\scripts\\scriptsVBS\\scriptsFinales\\" 
-arrScripts = Array("1-backup.vbs", "2-stopApp.vbs", "3-deleteComponentApp.vbs", "4-Copy.vbs", "4-createComponent.vbs", "5-startApp.vbs")
+arrScripts = Array("1-backup.vbs", "2-stopApp.vbs", "3-deleteComponentApp.vbs", "4-Copy.vbs", "5-createComponent.vbs", "6-startApp.vbs")
 
 Dim scriptExitCode
 For Each strScript in arrScripts
