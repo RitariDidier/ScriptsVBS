@@ -10,6 +10,11 @@ month = dateParts(0)
 day = dateParts(1)
 year = dateParts(2)
 
+' Check if month is a single digit and prepend "0" if necessary
+If Len(month) = 1 Then
+    month = "0" & month
+End If
+
 formattedDate = day & month & year
 
 Set fso = CreateObject("Scripting.FileSystemObject")
